@@ -1,0 +1,20 @@
+{
+  "name": "synapse",
+  "version": "1.0.0",
+  "description": "Sync Twitter bookmarks to Obsidian with AI-powered categorization",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "fetch": "node src/index.js",
+    "fetch:full": "node src/index.js --full",
+    "dry-run": "node src/index.js --dry-run",
+    "dry-run:full": "node src/index.js --dry-run --full"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+
