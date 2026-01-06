@@ -1,6 +1,26 @@
+# Dependencies
 node_modules/
-data/
-*.log
-.env
-.DS_Store
 
+# Runtime data
+data/
+
+# Config (contains API keys/secrets)
+config.js
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
