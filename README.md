@@ -53,12 +53,31 @@ Get an API key from [Google AI Studio](https://aistudio.google.com/apikey)
 
 ## Installation
 
+### Option 1: Install from npm (recommended)
+
 ```bash
-# Clone or navigate to project
+# Install globally
+npm install -g @xorforce/synapse
+
+# Now you can use the CLI commands anywhere
+synapse --help
+synapse-organize --help
+synapse-likes --help
+```
+
+### Option 2: Clone and run locally
+
+```bash
+# Clone the repo
 git clone https://github.com/xorforce/synapse
+cd synapse
 
 # Install dependencies
 npm install
+
+# Run with npm scripts
+npm run fetch
+npm run organize
 ```
 
 ## Configuration

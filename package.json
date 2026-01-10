@@ -1,9 +1,14 @@
 {
-  "name": "synapse",
+  "name": "@xorforce/synapse",
   "version": "1.0.0",
   "description": "Sync Twitter bookmarks and likes to Obsidian with AI-powered categorization",
   "type": "module",
   "main": "src/index.js",
+  "bin": {
+    "synapse": "./src/index.js",
+    "synapse-likes": "./src/likes.js",
+    "synapse-organize": "./src/organize.js"
+  },
   "scripts": {
     "fetch": "node src/index.js",
     "fetch:full": "node src/index.js --full",
@@ -18,6 +23,38 @@
     "organize:bookmarks": "node src/organize.js --target=Twitter\\ Bookmarks",
     "organize:likes": "node src/organize.js --target=Twitter\\ Likes"
   },
+  "keywords": [
+    "twitter",
+    "x",
+    "obsidian",
+    "bookmarks",
+    "likes",
+    "ai",
+    "gemini",
+    "cli",
+    "markdown",
+    "notes",
+    "vault",
+    "sync",
+    "categorization",
+    "organization"
+  ],
+  "author": "xorforce",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xorforce/synapse.git"
+  },
+  "homepage": "https://github.com/xorforce/synapse#readme",
+  "bugs": {
+    "url": "https://github.com/xorforce/synapse/issues"
+  },
+  "files": [
+    "src/",
+    "config.js",
+    "README.md",
+    "LICENSE"
+  ],
   "dependencies": {
     "@google/generative-ai": "^0.21.0"
   },
@@ -25,4 +62,3 @@
     "node": ">=18.0.0"
   }
 }
-
