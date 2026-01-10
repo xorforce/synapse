@@ -12,7 +12,11 @@
     "likes": "node src/likes.js",
     "likes:full": "node src/likes.js --full",
     "likes:dry-run": "node src/likes.js --dry-run",
-    "likes:dry-run:full": "node src/likes.js --dry-run --full"
+    "likes:dry-run:full": "node src/likes.js --dry-run --full",
+    "organize": "node src/organize.js",
+    "organize:dry-run": "node src/organize.js --dry-run",
+    "organize:bookmarks": "node src/organize.js --target=Twitter\\ Bookmarks",
+    "organize:likes": "node src/organize.js --target=Twitter\\ Likes"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0"

@@ -17,6 +17,8 @@ Sync your Twitter/X bookmarks to Obsidian with AI-powered categorization.
 - 🏷️ YAML frontmatter for Obsidian Dataview queries
 - ⚡ Pagination support for efficient API usage
 - 🔗 Direct links back to original tweets
+- 🧹 **Vault Organizer** - Reorganize existing notes without re-fetching
+- 🎨 **Beautiful CLI** - Interactive prompts, spinners, progress bars & colors
 
 ## Prerequisites
 
@@ -132,6 +134,86 @@ npm run dry-run:full     # Preview full sync
 You can combine flags:
 ```bash
 node src/index.js --dry-run --full
+```
+
+### Reorganize Existing Vault
+
+Already have a vault with notes that need better organization? Use the vault organizer with its beautiful interactive CLI:
+
+```bash
+npm run organize            # Interactive mode
+npm run organize:dry-run    # Preview without moving files
+npm run organize:bookmarks  # Organize bookmarks folder
+npm run organize:likes      # Organize likes folder
+```
+
+#### Interactive CLI Experience
+
+The organizer features a polished, user-friendly interface:
+
+```
+  ┌────────────────────────────────────────────────────┐
+  │   🧠 SYNAPSE                                       │
+  │   Vault Organizer                                  │
+  └────────────────────────────────────────────────────┘
+
+  Select folder to organize
+  ──────────────────────────────────────────────────────
+  ❯ 📚 Twitter Bookmarks (bookmarks)
+    ❤️  Twitter Likes (likes)
+    📁 Custom folder...
+
+  ◐ Scanning vault for notes...
+  ✓ Found 1911 markdown files
+  ✓ Parsed 1911 notes (1.3 MB)
+
+  ████████████░░░░░░░░░░░░░░░░░░ 45% (86/192)
+```
+
+**Features:**
+- 🎨 **Colorful output** with intuitive icons
+- ⌨️ **Arrow key navigation** for folder selection
+- 🔄 **Animated spinners** during processing
+- 📊 **Progress bars** with batch tracking
+- 📈 **Category distribution chart** at completion
+
+The organizer will:
+1. Let you **select** which folder to organize (arrow keys to navigate)
+2. Ask for **maximum folder depth** (1 = flat categories, 2+ = nested)
+3. Prompt for **backup** before making changes
+4. **Re-categorize** all existing notes using Gemini AI
+5. **Move files** to their new category folders
+6. **Clean up** empty folders
+
+#### Summary Output
+
+```
+  ┌────────────────────────────────────────────────┐
+  │  Notes processed:                       1911   │
+  │  Files moved:                           1850   │
+  │  Categories used:                         47   │
+  │  New folders created:                     12   │
+  └────────────────────────────────────────────────┘
+
+  Category Distribution
+  AI Development Tools   ████████████████████ 342
+  AI Agent Development   ██████████████████░░ 298
+  Swift Programming      ██████████░░░░░░░░░░ 156
+  Startup Advice         ████████░░░░░░░░░░░░ 124
+```
+
+#### Organize Command Flags
+| Flag | Description |
+|------|-------------|
+| `--dry-run` | Preview mode - no files moved |
+| `--no-backup` | Skip the backup prompt |
+| `--target=FolderName` | Specify target folder directly |
+| `--depth=N` | Set max folder depth (1-5) |
+
+Example:
+```bash
+# Reorganize with max depth 2, no backup prompt
+node src/organize.js --target="Twitter Bookmarks" --depth=2 --no-backup
 ```
 
 ## Output Structure
@@ -310,7 +392,9 @@ synapse/
 ├── data/
 │   └── state.json      # Tracks processed bookmarks
 └── src/
-    ├── index.js        # Main entry point
+    ├── index.js        # Main entry point (bookmark sync)
+    ├── likes.js        # Likes sync
+    ├── organize.js     # Vault reorganizer (no fetch)
     ├── bird.js         # Twitter API via bird CLI
     ├── gemini.js       # AI categorization
     ├── obsidian.js     # Markdown file generation
