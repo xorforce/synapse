@@ -109,13 +109,14 @@ ${tweet.text || '(No text)'}
  * @param {Object} tweet - Tweet object
  * @param {string} category - Category/folder name
  * @param {boolean} dryRun - If true, don't actually write files
+ * @param {string} baseFolder - Base folder name (defaults to bookmarksFolder)
  * @returns {string} Path to the created file
  */
-export function saveTweetToVault(tweet, category, dryRun = false) {
+export function saveTweetToVault(tweet, category, dryRun = false, baseFolder = config.bookmarksFolder) {
   // Build the folder path
   const folderPath = join(
     config.vaultPath,
-    config.bookmarksFolder,
+    baseFolder,
     sanitizeFilename(category)
   );
   
@@ -145,14 +146,15 @@ export function saveTweetToVault(tweet, category, dryRun = false) {
  * @param {Array} tweets - Array of tweet objects
  * @param {Map<string, string>} categories - Map of tweet ID to category
  * @param {boolean} dryRun - If true, don't actually write files
+ * @param {string} baseFolder - Base folder name (defaults to bookmarksFolder)
  * @returns {Array<{tweet: Object, path: string, category: string}>} Results
  */
-export function saveTweetsToVault(tweets, categories, dryRun = false) {
+export function saveTweetsToVault(tweets, categories, dryRun = false, baseFolder = config.bookmarksFolder) {
   const results = [];
   const foldersCreated = new Set();
   
-  // Ensure base bookmarks folder exists
-  const basePath = join(config.vaultPath, config.bookmarksFolder);
+  // Ensure base folder exists
+  const basePath = join(config.vaultPath, baseFolder);
   if (!dryRun && !existsSync(basePath)) {
     mkdirSync(basePath, { recursive: true });
   }
@@ -164,7 +166,7 @@ export function saveTweetsToVault(tweets, categories, dryRun = false) {
       const folderPath = join(basePath, sanitizeFilename(category));
       const isNewFolder = !existsSync(folderPath) && !foldersCreated.has(category);
       
-      const path = saveTweetToVault(tweet, category, dryRun);
+      const path = saveTweetToVault(tweet, category, dryRun, baseFolder);
       results.push({ tweet, path, category });
       
       if (isNewFolder) {

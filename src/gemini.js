@@ -28,15 +28,16 @@ export function initGemini() {
 
 /**
  * Get existing category folders from the vault
+ * @param {string} baseFolder - The base folder name (e.g., 'Twitter Bookmarks' or 'Twitter Likes')
  * @returns {string[]} List of existing folder names
  */
-export function getExistingCategories() {
-  const bookmarksPath = join(config.vaultPath, config.bookmarksFolder);
+export function getExistingCategories(baseFolder = config.bookmarksFolder) {
+  const basePath = join(config.vaultPath, baseFolder);
   
   try {
-    const entries = readdirSync(bookmarksPath);
+    const entries = readdirSync(basePath);
     const folders = entries.filter(entry => {
-      const fullPath = join(bookmarksPath, entry);
+      const fullPath = join(basePath, entry);
       return statSync(fullPath).isDirectory() && !entry.startsWith('.');
     });
     return folders;

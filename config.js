@@ -5,14 +5,20 @@ export default {
   // Folder inside vault for bookmarks
   bookmarksFolder: 'Twitter Bookmarks',
   
+  // Folder inside vault for likes
+  likesFolder: 'Twitter Likes',
+  
   // Fallback folder for uncategorizable tweets
   uncategorizedFolder: 'Uncategorized',
   
   // State file to track processed bookmarks
   stateFile: './data/state.json',
   
-  // Max pages to fetch from bird (0 = unlimited, each page ~20 bookmarks)
-  // For daily sync, 2-3 pages is usually enough to catch new bookmarks
+  // State file to track processed likes
+  likesStateFile: './data/likes-state.json',
+  
+  // Max pages to fetch from bird (0 = unlimited, each page ~20 items)
+  // For daily sync, 2-3 pages is usually enough to catch new items
   maxPages: 2,
   
   // Gemini model
