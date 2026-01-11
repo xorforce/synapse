@@ -1,6 +1,6 @@
 {
   "name": "@xorforce/synapse",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Sync Twitter bookmarks and likes to Obsidian with AI-powered categorization",
   "type": "module",
   "main": "src/index.js",
