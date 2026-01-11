@@ -55,7 +55,14 @@ synapse-organize --help
 synapse-likes --help
 ```
 
-### Option 2: Clone and run locally
+### Option 2: Install via Homebrew (macOS)
+
+```bash
+brew tap xorforce/tap
+brew install synapse
+```
+
+### Option 3: Clone and run locally
 
 ```bash
 # Clone the repo
