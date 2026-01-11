@@ -1,6 +1,6 @@
 {
   "name": "@xorforce/synapse",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sync Twitter bookmarks and likes to Obsidian with AI-powered categorization",
   "type": "module",
   "main": "src/index.js",
@@ -56,7 +56,8 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@google/generative-ai": "^0.21.0"
+    "@google/generative-ai": "^0.21.0",
+    "@steipete/bird": "^0.6.0"
   },
   "engines": {
     "node": ">=18.0.0"

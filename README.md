@@ -27,28 +27,18 @@ Sync your Twitter/X bookmarks to Obsidian with AI-powered categorization.
 node --version  # Should be v18 or higher
 ```
 
-### 2. Bird CLI
-Install the Twitter CLI tool:
-```bash
-# Using npm
-npm install -g @nicepkg/bird
-
-# Or using Homebrew (macOS)
-brew install steipete/tap/bird
-```
-
-### 3. Twitter Authentication
-Bird needs access to your Twitter session. The easiest way:
+### 2. Twitter Authentication
+Synapse includes the [bird CLI](https://github.com/steipete/bird) automatically. Bird needs access to your Twitter session. The easiest way:
 
 1. Log into [x.com](https://x.com) in Safari/Chrome/Firefox
-3. Verify it works:
+2. Verify it works:
    ```bash
    bird whoami
    ```
 
 For more info on how to setup bird, visit [here](https://github.com/steipete/bird).
 
-### 4. Gemini API Key
+### 3. Gemini API Key
 Get an API key from [Google AI Studio](https://aistudio.google.com/apikey)
 
 ## Installation
@@ -115,6 +105,8 @@ export default {
   includeMetadataTable: true,
 };
 ```
+
+> ⚠️ **Important:** Always test synapse on an empty or dummy vault first before pointing it at your actual Obsidian vault. This ensures you understand how the tool organizes files and lets you verify everything works as expected without risking your real notes.
 
 ## Usage
 
@@ -423,10 +415,10 @@ synapse/
 ## Troubleshooting
 
 ### "bird: command not found"
-Make sure bird is installed and in your PATH:
+Bird is bundled with synapse. If you installed synapse globally, bird should be available. Try reinstalling:
 ```bash
+npm install -g @xorforce/synapse
 which bird
-npm install -g @nicepkg/bird
 ```
 
 ### "Missing required credentials"
@@ -473,5 +465,5 @@ MIT
 
 ## Credits
 
-- [bird CLI](https://github.com/steipete/bird) - Twitter API access
+- [bird CLI](https://github.com/steipete/bird) - Twitter API access (bundled)
 - [Google Gemini](https://ai.google.dev/) - AI categorization
